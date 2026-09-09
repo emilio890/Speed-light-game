@@ -183,4 +183,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae022d982aa75664ca9b13ed359c9fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  speedenemy: 1
+  speedenemy: 50
