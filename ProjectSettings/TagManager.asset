@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemys
   - laser
+  - killbox
   layers:
   - Default
   - TransparentFX

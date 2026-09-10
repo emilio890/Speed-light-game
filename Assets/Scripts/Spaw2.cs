@@ -1,8 +1,6 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.VFX;
 
-public class SpawE1 : MonoBehaviour
+public class Spaw2 : MonoBehaviour
 {
     [SerializeField]
     private GameObject prefabE1;
@@ -11,13 +9,13 @@ public class SpawE1 : MonoBehaviour
     private float time = 0;
     [SerializeField]
     private float distanceE;
-  
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -30,20 +28,23 @@ public class SpawE1 : MonoBehaviour
             time = 0;
 
             xspw++;
-            timespw += 5;
+            timespw = Mathf.Max(1f, timespw - 0.2f);
+            
         }
     }
     private void Spw()
     {
         float ancho = distanceE * (xspw - 1);
-        float posIX = transform.position.x - (ancho / 2f);
-        for ( int i = 0; i < xspw; i++)
+        float posIY = transform.position.y - (ancho / 2f);
+        for (int i = 0; i < xspw; i++)
         {
-            float posX = posIX + (i * distanceE);
-            Vector3 pos = new Vector3(posX, transform.position.y, transform.position.z);
+            float posY = posIY + (i * distanceE);
+            Vector3 pos = new Vector3(transform.position.x, posY, transform.position.z);
 
-            Instantiate(prefabE1, pos, Quaternion.Euler(0,0,90));
-            
+            Instantiate(prefabE1, pos, Quaternion.Euler(0, 0, 0));
+
         }
     }
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+   
 }

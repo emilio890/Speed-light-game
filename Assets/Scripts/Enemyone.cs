@@ -28,6 +28,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
             manager.instance.addscore(10);
             Destroy(this.gameObject);
         }
+        if (collision.gameObject.CompareTag("killbox"))
+        {
+            Destroy(this.gameObject);
+
+        }
     }
 }
 
