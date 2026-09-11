@@ -29,7 +29,7 @@ public class SpawE1 : MonoBehaviour
             Spw();
             time = 0;
 
-            xspw++;
+            xspw+= 3;
             timespw += 5;
         }
     }

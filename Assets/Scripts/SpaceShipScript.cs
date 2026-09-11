@@ -21,6 +21,8 @@ public class SpaceShipScript : MonoBehaviour
     private int ammo;
     [SerializeField]
     private List<GameObject> boollaser = new List<GameObject>();
+    [SerializeField]
+    private AudioSource shoot;
 
     private void OnEnable()
     {
@@ -58,6 +60,7 @@ public class SpaceShipScript : MonoBehaviour
         if (inputshoot.triggered)
         {
             Disparar();
+            shoot.PlayOneShot(shoot.clip);
         }
     }
      void Disparar()

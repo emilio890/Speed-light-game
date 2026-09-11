@@ -28,7 +28,7 @@ public class SpawE3 : MonoBehaviour
             time = 0;
 
             
-            timespw = Mathf.Max(1f, timespw - 0.2f);
+            timespw = Mathf.Max(0.5f, timespw - 0.2f);
 
         }
     }

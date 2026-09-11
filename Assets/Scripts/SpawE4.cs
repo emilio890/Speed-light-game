@@ -13,6 +13,7 @@ public class SpawE4 : MonoBehaviour
     private float minY = -4.46f;
     [SerializeField]
     private float maxY = 8.35f;
+    
 
 
     void Start()
@@ -29,7 +30,8 @@ public class SpawE4 : MonoBehaviour
             time = 0;
 
            
-            timespw = Mathf.Max(1f, timespw - 0.2f);
+            timespw = Mathf.Max(0.5f, timespw - 0.2f);
+            
 
         }
     }
