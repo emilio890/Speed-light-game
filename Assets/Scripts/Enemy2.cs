@@ -1,5 +1,5 @@
 using DG.Tweening;
-using Unity.AI.MCP.Editor.Tools;
+
 using UnityEngine;
 public class Enemy2 : MonoBehaviour
 {

@@ -9,8 +9,14 @@ public class manager : MonoBehaviour
     private InputAction esc;
     public static manager instance;
     private int score;
+    private float time;
+    
     [SerializeField]
     private TMP_Text Scoretext;
+    [SerializeField]
+    private TMP_Text hightscore;
+    [SerializeField]
+    private TMP_Text hightime;
     [SerializeField]
     private GameObject gameover;
     [SerializeField]
@@ -34,7 +40,18 @@ public class manager : MonoBehaviour
     }
     void Start()
     {
-        
+       
+
+        int recordGuardado = PlayerPrefs.GetInt("HighScore", 0);
+        float timesurvive = PlayerPrefs.GetFloat("HighTime", 0f);
+        if (hightscore != null)
+        {
+            hightscore.text = "High Score: " + recordGuardado;
+        }
+        if (hightime != null)
+        {
+            hightime.text = "High Time: " + timesurvive;
+        }
         if (iniciojuego == true)
         {
             pnaleinicio.SetActive(false);
@@ -51,6 +68,7 @@ public class manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
         if (esc.triggered)
         {
             pausa();
@@ -60,6 +78,28 @@ public class manager : MonoBehaviour
     public void loose()
     {
         gameover.SetActive(true);
+
+        if (PlayerPrefs.GetInt("HighScore") < score)
+        {
+            
+            PlayerPrefs.SetInt("HighScore", score);
+
+            if (hightscore != null)
+            {
+                hightscore.text = "High Score: " + score;
+            }
+        }
+
+        if (PlayerPrefs.GetFloat("HighTime") < time)
+        {
+            
+            PlayerPrefs.SetFloat("HighTime", time);
+
+            if (hightscore != null)
+            {
+                hightscore.text = "High Time: " + time;
+            }
+        }
     }
     public void addscore(int scores)
     {
@@ -71,15 +111,18 @@ public class manager : MonoBehaviour
     public void playbutton()
     {
         pnaleinicio.SetActive(false);
+        pauseoanel.SetActive(false);
         Time.timeScale = 1f;
     }
     public void retrybottom()
     {
+        
         iniciojuego = true;
         SceneManager.LoadScene(0);
     }
     public void reloadmenubutton()
     {
+        pauseoanel.SetActive(false);
         SceneManager.LoadScene(0);
     }
     public void quitbutton()

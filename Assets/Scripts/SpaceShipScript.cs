@@ -14,6 +14,10 @@ public class SpaceShipScript : MonoBehaviour
     [SerializeField]
     private float minlimit;
     [SerializeField]
+    private float rimeonshoot = 0.2f;
+    
+    private float cronometreshoot;
+    [SerializeField]
     Rigidbody2D rbEspaceShip;
     [SerializeField]
     private GameObject prefablaser;
@@ -57,14 +61,21 @@ public class SpaceShipScript : MonoBehaviour
     
     void Update()
     {
-        if (inputshoot.triggered)
+        cronometreshoot += Time.deltaTime;
+        if (cronometreshoot >= rimeonshoot)
         {
-            Disparar();
-            shoot.PlayOneShot(shoot.clip);
+        Disparar();
+            cronometreshoot = 0;
         }
+        //if (inputshoot.triggered)
+        //{
+        //    Disparar();
+        //    shoot.PlayOneShot(shoot.clip);
+        //}
     }
      void Disparar()
     {
+        shoot.PlayOneShot(shoot.clip);
         GameObject laser = Getlaser();
         laser.transform.position = transform.position;
         laser.SetActive(true);
